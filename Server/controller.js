@@ -39,7 +39,7 @@ class controller {
 
             if (!validPassword) return res.status(400).json({ message: 'Неправильний пароль' });
 
-            return res.json({ message: `Ви ввійшли у свій обліковий запис, ${username}` });
+            return res.json({ message: `Ви ввійшли у свій обліковий запис, ${username}, роль: ${user.role}` });
         } catch (error) {
             console.log(error);
             res.status(400).json({ message: 'Login error' });
@@ -94,7 +94,16 @@ class controller {
                 res.status(400).json({ message: 'Find user error ', error});
             }
         }
-      
+        async getRole(req, res) {
+            try {
+                const user = await User.findOne({username: req.body.username});
+                if (!user) return res.status(400).json({message: "Користувача не знайдено"})
+                res.json({role: user.role});
+            } catch (error) {
+                console.log(error);
+                res.status(400).json({ message: 'Find role error ', error});
+            }
+        }
 }
 
 module.exports = new controller();

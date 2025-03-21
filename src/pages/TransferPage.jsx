@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { logoutUser } from '../services/authService'
-import { getUserBalance, updateUserBalance, findUser } from '../services/balanceService';
+import { getUserBalance, updateUserBalance } from '../services/balanceService';
+import { findUser } from '../services/otherService';
 
 export default function Transfer() {
     const navigate = useNavigate();

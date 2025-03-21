@@ -10,5 +10,6 @@ router.post('/login', controller.login)
 router.post('/findUser', controller.findUser)
 router.post('/getBalance', controller.getBalance)
 router.post('/updateBalance', controller.updateBalance)
+router.post('/getRole', controller.getRole)
 
 module.exports = router

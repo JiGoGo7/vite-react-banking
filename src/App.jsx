@@ -7,6 +7,7 @@ import Transfer from './pages/TransferPage';
 import Main from './pages/MainPage';
 import Register from './pages/RegisterPage';
 import Login from './pages/LoginPage';
+import Admin from './pages/AdminPage';
 
 function App() {
     const [count, setCount] = useState(0);
@@ -21,6 +22,7 @@ function App() {
                 <Route path = '/earnings' element = {<Earnings />}/>
                 <Route path = '/aboutus' element = {<AboutUs />}/>
                 <Route path = '/transfer' element = {<Transfer />}/>
+                <Route path = '/admin' element = {<Admin />}/>
             </Routes>
         </Router>
         </>
