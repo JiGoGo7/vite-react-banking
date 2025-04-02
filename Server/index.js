@@ -1,7 +1,8 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
 const express = require('express');
-const router = require('./router');
+const router = require('./routes/router');
+const creditRouter = require('./routes/creditRouter')
 const PORT = process.env.PORT;
 const cors = require("cors");
 const app = express();
@@ -13,6 +14,7 @@ app.use(cors({
 
 app.use(express.json());
 app.use("/auth", router)
+app.use("/credits", creditRouter)
 
 const start = async () => {
     try {

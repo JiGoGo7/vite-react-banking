@@ -1,9 +1,8 @@
-const User = require('./models/userModel');
+const User = require('../models/userModel');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 const { validationResult } = require('express-validator');
-const Credit = require("./models/creditModel");
 
 class controller {
     async registr(req, res) {
@@ -100,36 +99,6 @@ class controller {
         } catch (error) {
             console.log(error);
             res.status(500).json({ message: 'Find user error ', error });
-        }
-    }
-    async getRole(req, res) {
-        try {
-            const user = await User.findOne({ username: req.body.username });
-            if (!user) return res.status(400).json({ message: 'Користувача не знайдено' });
-            res.json({ role: user.role });
-        } catch (error) {
-            console.log(error);
-            res.status(500).json({ message: 'Find role error ', error });
-        }
-    }
-    async credit(req, res) {
-        try {
-            const error = validationResult(req);
-
-            if (!error.isEmpty())
-                return res.status(400).json({
-                    message: `Помилка: `,
-                    error: error.array().map((err) => err.msg),
-                });
-
-            const { userId, fullName, income, expenses, requestedAmount, status, creditDate, age, job, maritalStatus } = req.body;
-
-            const credit = new Credit({ userId, fullName, income, expenses, requestedAmount, status, creditDate, age, job, maritalStatus });
-            await credit.save();
-            return res.json({ message: 'Запит на кредит відправлено!' });
-        } catch (error) {
-            console.log(error);
-            res.status(500).json({ message: 'Credit request error' });
         }
     }
 }
