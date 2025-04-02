@@ -63,6 +63,8 @@ const Credit = () => {
           <button onClick={() => { navigate("/earnings") }}>Заробіток</button>
           <button onClick={() => { navigate("/transfer") }}>Переказ</button>
           <button onClick={() => { logoutUser(); navigate("/login"); }}>Вийти</button>
+          <h2>Сторінка кредитів</h2>
+          <h4>На цій сторінці ви можете взяти кредит. Найвигідніший відсоток - 0% на всі кредити!</h4>
           <form onSubmit={handleCredit}>
             <input
             type="text"
