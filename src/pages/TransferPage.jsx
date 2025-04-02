@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { logoutUser } from '../services/authService'
+import { logoutUser } from '../services/authService';
 import { getUserBalance, updateUserBalance } from '../services/balanceService';
 import { findUser } from '../services/otherService';
 
@@ -34,7 +34,7 @@ export default function Transfer() {
             }
 
             const transferBalance = Number(tBalance);
-            
+
             if (foundUser.username == user.username) {
                 alert('Ви не можете переказати кошти самі собі!');
                 return;
@@ -43,12 +43,12 @@ export default function Transfer() {
             if (transferBalance <= 0) {
                 alert('Введіть коректну сумму!');
                 return;
-            }    
+            }
 
             if (balance < transferBalance) {
                 alert('На вашому рахунку недостатньо коштів для цієї операції');
                 return;
-              }  
+            }
 
             const otherUserBalance = foundUser.balance + transferBalance;
             await updateUserBalance(foundUser.username, otherUserBalance);
@@ -85,6 +85,12 @@ export default function Transfer() {
                                 navigate('/earnings');
                             }}>
                             Заробіток
+                        </button>
+                        <button
+                            onClick={() => {
+                                navigate('/credit');
+                            }}>
+                            Кредит
                         </button>
                         <button
                             onClick={() => {

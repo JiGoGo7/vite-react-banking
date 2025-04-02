@@ -13,7 +13,6 @@ const Login = () => {
         
         try {
             const response = await loginUser(username, password);
-            console.log('Отримана відповідь:', response);
 
             if (response.message) setMessage(response.message);
 

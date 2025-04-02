@@ -36,9 +36,10 @@ export default function Earnings() {
             <div>
                 {user ? (
                     <>
-                        <button onClick={() => navigate('/')}>Головна</button>
-                        <button onClick={() => navigate('/aboutus')}>Про нас</button>
-                        <button onClick={() => navigate('/transfer')}>Переказ</button>
+                        <button onClick={() => { navigate('/') }}>Головна</button>
+                        <button onClick={() => { navigate('/aboutus') }}>Про нас</button>
+                        <button onClick={() => { navigate('/transfer') }}>Переказ</button>
+                        <button onClick={() => { navigate("/credit") }}>Кредит</button>
                         <button
                             onClick={() => {
                                 logoutUser();

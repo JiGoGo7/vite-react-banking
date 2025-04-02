@@ -17,11 +17,14 @@ export const findUser = async (username) => {
     return data;
   };
   
+  const getToken = () => localStorage.getItem('token');
+
   export const getRole = async (username) => {
     const response = await fetch(`${API_URL}/getRole`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "Authorization": `Bearer ${getToken()}`
       },
       body: JSON.stringify({ username }),
     });

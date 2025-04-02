@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Earnings from './pages/EarningPage';
@@ -8,9 +7,17 @@ import Main from './pages/MainPage';
 import Register from './pages/RegisterPage';
 import Login from './pages/LoginPage';
 import Admin from './pages/AdminPage';
+import Credit from './pages/CreditPage';
+import { useEffect } from "react";
+
 
 function App() {
-    const [count, setCount] = useState(0);
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            localStorage.removeItem('user');
+        }
+    }, []);
     
     return (
         <>
@@ -23,6 +30,7 @@ function App() {
                 <Route path = '/aboutus' element = {<AboutUs />}/>
                 <Route path = '/transfer' element = {<Transfer />}/>
                 <Route path = '/admin' element = {<Admin />}/>
+                <Route path = '/credit' element = {<Credit />}/>
             </Routes>
         </Router>
         </>

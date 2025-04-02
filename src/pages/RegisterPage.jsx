@@ -14,7 +14,6 @@ const Register = () => {
     
         try {
             const response = await registerUser(username, password);
-            console.log("Отримана відповідь:", response);
             
             if (response.message) setMessage(response.message);
             

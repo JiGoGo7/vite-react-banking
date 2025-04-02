@@ -26,11 +26,7 @@ const Admin = () => {
       {user ? (
         <>
           <button onClick={() => {navigate("/")}}>Головна</button>
-          <button onClick={() => {navigate("/earnings")}}>Заробіток</button>
-          <button onClick={() => {navigate("/transfer")}}>Переказ</button>
-          <button onClick={() => { logoutUser(); navigate("/login"); }}>Вийти</button>
-          <h2>Про нас</h2>
-            <h4>Найнадійніший банк із усіх існуючих. Миттєві перекази коштів навіть на Марс! Єдина валюта! Ви точно не пошкодмуєте про рішення користуватися нашим банком!!!!!</h4>
+          
         </>
       ) : (
         <p>Перенаправлення...</p>

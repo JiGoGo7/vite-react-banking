@@ -1,5 +1,6 @@
 const API_URL = 'http://localhost:7070/auth';
 
+
 export const updateUserBalance = async (username, newBalance) => {
     const response = await fetch(`${API_URL}/updateBalance`, {
       method: "POST",
@@ -12,12 +13,15 @@ export const updateUserBalance = async (username, newBalance) => {
     const data = await response.json();
     return data;
   };
-  
+
+  const getToken = () => localStorage.getItem('token');
+
   export const getUserBalance = async (username) => {
   const response = await fetch(`${API_URL}/getBalance`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      "Authorization": `Bearer ${getToken()}`
     },
     body: JSON.stringify({ username }),
   });
