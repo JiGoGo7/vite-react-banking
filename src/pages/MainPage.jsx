@@ -2,6 +2,7 @@ import { use, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { logoutUser } from '../services/authService';
 import { getUserBalance } from '../services/balanceService';
+import { getCredit } from "../services/creditService";
 
 const Main = () => {
   const navigate = useNavigate();
@@ -34,7 +35,7 @@ const Main = () => {
           <button onClick={() => { navigate("/credit") }}>Кредит</button>
           <button onClick={() => { logoutUser(); navigate("/login"); }}>Вийти</button>
           <h2>Вітаю, {user.username}!</h2>
-          <h3>Ваш баланс: {balance}</h3>
+          <h3>Ваш баланс: {balance}₴</h3>
         </>
       ) : (
         <p>Перенаправлення...</p>

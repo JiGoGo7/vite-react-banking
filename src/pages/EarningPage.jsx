@@ -25,7 +25,7 @@ export default function Earnings() {
     const saveToBalance = async () => {
         if (user) {
             const newBalance = balance + count;
-            await updateUserBalance(user.username, newBalance);
+            await updateUserBalance(user.userId, count);
             setBalance(newBalance);
             setCount(0);
         }
@@ -56,7 +56,7 @@ export default function Earnings() {
             <div className="card">
                 <button onClick={() => setCount(count + 1)}>Клікай та заробляй! {count}</button>
                 <button onClick={saveToBalance}>Збереження ваших коштів</button>
-                <p>Ваш баланс: {balance}</p>
+                <p>Ваш баланс: {balance}₴</p>
                 <p>Тільки у нас ви можете прямо на сайті заробити гроші!</p>
             </div>
         </>

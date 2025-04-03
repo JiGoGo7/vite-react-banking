@@ -1,15 +1,15 @@
 const API_URL = 'http://localhost:7070/auth';
 
 
-export const updateUserBalance = async (username, newBalance) => {
+export const updateUserBalance = async (userId, newBalance) => {
     const response = await fetch(`${API_URL}/updateBalance`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ username, newBalance }),
+      body: JSON.stringify({ userId, newBalance }),
     });
-  
+    console.log(userId, newBalance);
     const data = await response.json();
     return data;
   };
@@ -25,7 +25,7 @@ export const updateUserBalance = async (username, newBalance) => {
     },
     body: JSON.stringify({ username }),
   });
-
+  
   if (!response.ok) {
     throw new Error("Помилка отримання балансу");
   }

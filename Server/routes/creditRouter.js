@@ -17,7 +17,7 @@ router.post(
 );
 
 router.post(
-    '/risk',
+    '/rating',
     [
         check('income', 'Дохід повинен бути числом').isNumeric(),
         check('expenses', 'Витрати повинні бути числом').isNumeric(),
@@ -25,12 +25,15 @@ router.post(
         check('maritalStatus', 'Сімейний статус повинен бути булевим значенням').isBoolean(),
         check('job', 'Наявність роботи повинна бути булевим значенням').isBoolean(),
     ],
-    controller.creditRisk
+    controller.creditRating
 );
 
 router.get('/getCredits', controller.getCredits);
 router.patch('/:id/status', controller.creditStatus);
 router.post('/approve/:id', authMiddleware, roleMiddleware(['Admin', 'employee']), controller.approveCredit);
 router.post('/reject/:id', authMiddleware, roleMiddleware(['Admin', 'employee']), controller.rejectCredit);
+router.post('/getCredit', controller.getCredit);
+router.post("/payCredit", controller.payCredit);
+router.post("/getApprovedCredit", controller.getApprovedCredit);
 
 module.exports = router;

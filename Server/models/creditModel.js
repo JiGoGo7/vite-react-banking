@@ -9,7 +9,7 @@ const Credit = new Schema({
     income: { type: Number, required: true },
     expenses: { type: Number, required: true },
     requestedAmount: { type: Number, required: true },
-    status: { type: String, enum: ['Pending', 'Approved', 'Rejected'], default: 'Pending' },
+    status: { type: String, enum: ['Pending', 'Approved', 'Rejected', 'Paid'], default: 'Pending' },
     createdAt: { type: Date, default: Date.now }
 });
 

@@ -1,8 +1,8 @@
 const User = require('../models/userModel');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-require('dotenv').config();
 const { validationResult } = require('express-validator');
+require('dotenv').config();
 
 class controller {
     async registr(req, res) {
@@ -59,17 +59,22 @@ class controller {
     }
     async updateBalance(req, res) {
         try {
-            const { username, newBalance } = req.body;
-            const user = await User.findOneAndUpdate({ username }, { balance: newBalance }, { new: true });
-
+            const { userId, newBalance } = req.body;
+            const user = await User.findById(userId);
+    
             if (!user) return res.status(400).json({ message: 'Користувач не знайдений' });
-
-            return res.json({ message: 'Ви успішно поповнили баланс!', balance: user.balance });
+    
+            user.balance += newBalance;
+            await user.save();
+    
+            console.log(req.body);
+            return res.json({ message: 'Баланс оновлено!', balance: user.balance });
         } catch (error) {
             console.log(error);
             return res.status(500).json({ message: 'Помилка оновлення балансу' });
         }
     }
+    
     async getBalance(req, res) {
         try {
             const { username } = req.body;
@@ -94,6 +99,18 @@ class controller {
     async findUser(req, res) {
         try {
             const user = await User.findOne({ username: req.body.username });
+            if (!user) return res.status(400).json({ message: 'Користувача не знайдено' });
+            res.json(user);
+        } catch (error) {
+            console.log(error);
+            res.status(500).json({ message: 'Find user error ', error });
+        }
+    }
+
+    async findUserById(req, res) {
+        try {
+            const { userId } = req.body
+            const user = await User.findById(userId);
             if (!user) return res.status(400).json({ message: 'Користувача не знайдено' });
             res.json(user);
         } catch (error) {

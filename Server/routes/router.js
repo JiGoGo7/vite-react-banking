@@ -19,5 +19,6 @@ router.post('/login', controller.login);
 router.post('/findUser', controller.findUser);
 router.post('/getBalance', controller.getBalance);
 router.post('/updateBalance', controller.updateBalance);
+router.post('/findUserById', controller.findUserById);
 
 module.exports = router;

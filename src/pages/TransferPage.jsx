@@ -51,10 +51,10 @@ export default function Transfer() {
             }
 
             const otherUserBalance = foundUser.balance + transferBalance;
-            await updateUserBalance(foundUser.username, otherUserBalance);
+            await updateUserBalance(foundUser._id, otherUserBalance);
 
             const userBalance = balance - transferBalance;
-            await updateUserBalance(user.username, userBalance);
+            await updateUserBalance(user.userId, userBalance);
             setBalance(userBalance);
 
             alert('Операція переказу пройшла усішно!');
