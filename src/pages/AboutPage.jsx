@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { logoutUser } from "../services/authService";
+import "../desifnFiles/aboutPage.css";
+import "../desifnFiles/navBar.css";
 
 const AboutUs = () => {
   const navigate = useNavigate();
@@ -8,9 +9,7 @@ const AboutUs = () => {
 
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
-    if (!storedUser) {
-      navigate("/login");
-    } else {
+    if (storedUser) {
       setUser(JSON.parse(storedUser));
     }
   }, [navigate]);
@@ -18,19 +17,29 @@ const AboutUs = () => {
   return (
     <div>
       {user ? (
-        <>
-          <button onClick={() => { navigate("/") }}>Головна</button>
-          <button onClick={() => { navigate("/earnings") }}>Заробіток</button>
-          <button onClick={() => { navigate("/transfer") }}>Переказ</button>
-          <button onClick={() => { navigate("/credit") }}>Кредит</button>
-          <button onClick={() => { logoutUser(); navigate("/login"); }}>Вийти</button>
-          <h2>Про нас</h2>
-            <h4>Найнадійніший банк із усіх існуючих. Миттєві перекази коштів навіть на Марс! Єдина валюта! Ви точно не пошкодмуєте про рішення користуватися нашим банком!!!!!</h4>
-        </>
+        <div className="about-container">
+          <h1>Ласкаво просимо до банки Євгена!</h1>
+          <p className="about-text">
+            Ми створені для вашої фінансової свободи. Переказуйте гроші, заробляйте та отримуйте кредити – легко та швидко.
+          </p>
+          <div className="features">
+            <div className="feature-card" onClick={() => navigate("/transfer")}>
+              <h2>🔃 Перекази</h2>
+              <p>Швидкі, безпечні та зручні перекази між користувачами.</p>
+            </div>
+            <div className="feature-card" onClick={() => navigate("/earnings")}>
+              <h2>💰 Заробіток</h2>
+              <p>Збільшуйте свій баланс, виконуючи завдання та отримуючи бонуси.</p>
+            </div>
+            <div className="feature-card" onClick={() => navigate("/credit")}>
+              <h2>🏦 Кредити</h2>
+              <p>Отримуйте миттєві кредити з гнучкими умовами повернення.</p>
+            </div>
+          </div>
+        </div>
       ) : (
         <p>Перенаправлення...</p>
       )}
-      
     </div>
   );
 };

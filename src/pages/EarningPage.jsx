@@ -1,26 +1,32 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { logoutUser } from '../services/authService';
 import { getUserBalance, updateUserBalance } from '../services/balanceService';
+import '../desifnFiles/earningPage.css';
+import '../desifnFiles/navBar.css'
 
 export default function Earnings() {
+    const [coins, setCoins] = useState([]);
     const [count, setCount] = useState(0);
     const [balance, setBalance] = useState(0);
     const [user, setUser] = useState(null);
-    const navigate = useNavigate();
+    
+        useEffect(() => {
+            const coinElements = [];
+            for (let i = 0; i < 10; i++) {
+                coinElements.push(<div key={i} className="coin"></div>);
+            }
+            setCoins(coinElements);
+        }, []);
 
     useEffect(() => {
         const storedUser = localStorage.getItem('user');
-        if (!storedUser) {
-            navigate('/login');
-        } else {
+        if (storedUser) {
             const parsedUser = JSON.parse(storedUser);
             setUser(parsedUser);
             getUserBalance(parsedUser.username).then((res) => {
                 setBalance(res.balance);
             });
         }
-    }, [navigate]);
+    }, []);
 
     const saveToBalance = async () => {
         if (user) {
@@ -32,33 +38,25 @@ export default function Earnings() {
     };
 
     return (
-        <>
-            <div>
-                {user ? (
-                    <>
-                        <button onClick={() => { navigate('/') }}>Головна</button>
-                        <button onClick={() => { navigate('/aboutus') }}>Про нас</button>
-                        <button onClick={() => { navigate('/transfer') }}>Переказ</button>
-                        <button onClick={() => { navigate("/credit") }}>Кредит</button>
-                        <button
-                            onClick={() => {
-                                logoutUser();
-                                navigate('/login');
-                            }}>
-                            Вийти
+        <div className="earnings-container">
+        {user ? (
+            <>
+                    {coins}
+                    <h1>💰 Заробіток на сайті</h1>
+                    <p className="description">
+                        Натискайте кнопку, щоб заробляти гроші, і зберігайте їх на балансі.
+                    </p>
+                    <p className="balance-text">Ваш баланс: <span className="money">{balance}₴</span></p>
+                    <div className="card">
+                        <button className="earn-button" onClick={() => setCount(count + 1)}>
+                            💰 Клікай та заробляй! +{count}₴
                         </button>
-                    </>
-                ) : (
-                    <p>Перенаправлення...</p>
-                )}
-            </div>
-            <h1>Заробіток</h1>
-            <div className="card">
-                <button onClick={() => setCount(count + 1)}>Клікай та заробляй! {count}</button>
-                <button onClick={saveToBalance}>Збереження ваших коштів</button>
-                <p>Ваш баланс: {balance}₴</p>
-                <p>Тільки у нас ви можете прямо на сайті заробити гроші!</p>
-            </div>
-        </>
+                        <button className="save-button" onClick={saveToBalance}>💾 Зберегти зароблене</button>
+                    </div>
+                </>
+            ) : (
+                <p>Перенаправлення...</p>
+            )}
+        </div>
     );
 }

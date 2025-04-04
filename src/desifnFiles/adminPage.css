@@ -1,0 +1,73 @@
+.admin-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.admin-text {
+  text-align: center;
+  color: #5a2a1e;
+  margin-bottom: 20px;
+}
+
+.credits-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: left;
+  }
+  
+  .credit-card {
+    width: 100%;
+    max-width: 700px;
+    max-height: 300px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 10px;
+  }
+  
+
+.credit-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.credit-actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.approve-btn {
+  padding: 10px 15px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.approve-btn:hover {
+  background-color: #45a049;
+}
+
+.reject-btn {
+  padding: 10px 15px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.reject-btn:hover {
+  background-color: #d32f2f;
+}
+

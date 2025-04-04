@@ -1,0 +1,98 @@
+.earnings-container {
+    text-align: center;
+    padding: 20px;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.balance-text {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.money {
+    color: #5a2a1e;
+    font-size: 28px;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.earn-button {
+    background: #ffcc00;
+    color: #333;
+    font-size: 22px;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.earn-button:hover {
+    background: #ffdb4d;
+    transform: scale(1.1);
+}
+
+.earn-button:active {
+    background: #ffb700;
+    transform: scale(0.95);
+}
+
+.save-button {
+    background: #4CAF50;
+    color: white;
+    font-size: 18px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.save-button:hover {
+    background: #45a049;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-400px) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(50vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.coin {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: url('../assets/dolar.png') no-repeat center/cover;
+    animation: fall 3s linear infinite;
+}
+
+.coin:nth-child(1) { left: 5%; animation-duration: 3s; }
+.coin:nth-child(2) { left: 15%; animation-duration: 4s; }
+.coin:nth-child(3) { left: 25%; animation-duration: 2.5s; }
+.coin:nth-child(4) { left: 35%; animation-duration: 3.5s; }
+.coin:nth-child(5) { left: 45%; animation-duration: 2.8s; }
+.coin:nth-child(6) { left: 55%; animation-duration: 3.2s; }
+.coin:nth-child(7) { left: 65%; animation-duration: 3.7s; }
+.coin:nth-child(8) { left: 75%; animation-duration: 2.9s; }
+.coin:nth-child(9) { left: 85%; animation-duration: 3.3s; }
+.coin:nth-child(10) { left: 95%; animation-duration: 2.7s; }

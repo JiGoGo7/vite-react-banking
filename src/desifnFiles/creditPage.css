@@ -1,0 +1,101 @@
+.credit-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #5a2a1e;
+    border-radius: 15px;
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+  .credit-title {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #f3e5c1
+  }
+  
+  .credit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    animation: slideIn 0.8s ease-in-out;
+    color: #f3e5c1
+  }
+  
+  .credit-form input,
+  .credit-form label {
+    font-size: 16px;
+  }
+  
+  .credit-form input[type="checkbox"] {
+    margin-left: 10px;
+  }
+  
+  .credit-btn {
+    padding: 10px;
+    background-color: #f3e5c1;
+    color: #5a2a1e;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .credit-btn:hover {
+    background-color: #86592d;
+  }
+  
+  .credit-card {
+    background-color: #f3e5c1;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    animation: fadeIn 0.7s ease;
+  }
+  
+  .credit-message {
+    margin-top: 15px;
+    font-weight: bold;
+    color: green;
+    text-align: center;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.98);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+  }
+  
+  .credit-form input[type="text"],
+.credit-form input[type="number"] {
+  padding: 10px 14px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  outline: none;
+  background-color: #fff;
+  color: #5a2a1e
+}
+
+.credit-form input[type="text"]:focus,
+.credit-form input[type="number"]:focus {
+  border-color: #f3e5c1;
+  box-shadow: 0 0 0 3px rgba(98, 0, 234, 0.1);
+}

@@ -1,0 +1,68 @@
+.register-body {
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", sans-serif;
+    background-color: #f4f4f8;
+  }
+  
+.register-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
+  
+.register-h2 {
+    margin-bottom: 20px;
+    color: #333;
+  }
+
+.register-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    min-width: 300px;
+  }
+  
+  .register-input[type="text"],
+  .register-input[type="password"] {
+  padding: 10px 14px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  outline: none;
+  background-color: #fff;
+  color: #5a2a1e
+}
+
+.register-input[type="text"]:focus,
+.register-input[type="password"]:focus {
+  border-color: #f3e5c1;
+  box-shadow: 0 0 0 3px rgba(98, 0, 234, 0.1);
+}
+  
+  .register-button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    background-color: #5a2a1e;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .register-button:hover {
+    background-color: #5a2a1e;
+  }
+  
+  .regoster-p {
+    margin-top: 10px;
+    color: #c00;
+    font-weight: bold;
+  }  

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { registerUser } from "../services/authService";
 import { useNavigate } from "react-router-dom";
-
+import "../desifnFiles/registerPage.css";
 
 const Register = () => {
     const [username, setUsername] = useState("");
@@ -30,27 +30,33 @@ const Register = () => {
     
     
     return (
-        <div>
-            <h2>Реєстрація</h2>
-            <form onSubmit={handleRegister}>
-                <input 
-                    type="text" 
-                    placeholder="Username" 
-                    value={username} 
-                    onChange={(e) => setUsername(e.target.value)} 
-                    required 
+<div className="register-div">
+            <h2 className="register-h2">Реєстрація</h2>
+            <form className="register-form" onSubmit={handleRegister}>
+                <input
+                    className="register-input"
+                    type="text"
+                    placeholder="Username"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    required
                 />
-                <input 
-                    type="password" 
-                    placeholder="Password" 
-                    value={password} 
-                    onChange={(e) => setPassword(e.target.value)} 
-                    required 
+                <input
+                    className="register-input"
+                    type="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
                 />
-                <button type="submit">Зареєструватися</button>
+                <button className="register-button" type="submit">
+                    Зареєструватися
+                </button>
             </form>
-            {message && <p>{message}</p>}
-            <button onClick={() => {navigate('/login')}}>Авторизація</button>
+            {message && <p className="regoster-p">{message}</p>}
+            <button className="register-button" onClick={() => navigate('/login')}>
+                Авторизація
+            </button>
         </div>
     );
 };

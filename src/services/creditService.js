@@ -121,3 +121,20 @@ export const getApprovedCredit = async (username) => {
   const data = await response.json();
   return data;
 };
+
+export const getPaidCredit = async (username) => {
+  const response = await fetch(`${API_URL}/getPaidCredit`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ username }),
+  });
+
+  if (!response.ok) {
+    throw new Error("Помилка пошуку користувача");
+  }
+  
+  const data = await response.json();
+  return data;
+};

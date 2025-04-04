@@ -195,6 +195,22 @@ class CreditController {
         }
 
     }
+
+    async getPaidCredit(req, res) {
+        try {
+            const user = await User.findOne({ username: req.body.username });
+            const credit = await Credit.find({ userId: user._id, status: 'Paid' });
+            if (!credit) {
+                return res.status(404).json({ message: "No approved credit found" });
+            }    
+            res.json(credit);
+        } catch (error) {
+            console.log(error);
+            res.status(500).json({ message: 'Find credit error ', error });
+        }
+
+    }
+
     async payCredit(req, res) {
         try {
             const { userId, creditId } = req.body;

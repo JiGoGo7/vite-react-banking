@@ -1,0 +1,28 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 85px;
+    width: 100%;
+    position: relative;
+  }
+  .nav-left {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.balance-box {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    background-color: #5a2a1e;
+    padding: 12px 18px;
+    border-radius: 12px;
+}
+  

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { loginUser } from '../services/authService';
 import { useNavigate } from "react-router-dom";
+import '../desifnFiles/registerPage.css'
 
 const Login = () => {
     const [username, setUsername] = useState('');
@@ -28,10 +29,11 @@ const Login = () => {
     };
 
     return (
-        <div>
-            <h2>Авторизація</h2>
-            <form onSubmit={handleLogin}>
+            <div className="register-div">
+            <h2 className="register-h2">Авторизація</h2>
+            <form className="register-form" onSubmit={handleLogin}>
                 <input
+                    className="register-input"
                     type="text"
                     placeholder="Username"
                     value={username}
@@ -39,16 +41,21 @@ const Login = () => {
                     required
                 />
                 <input
+                    className="register-input"
                     type="password"
                     placeholder="Password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
                 />
-                <button type="submit">Увійти</button>
+                <button className="register-button" type="submit">
+                    Авторизуватися
+                </button>
             </form>
-            {message && <p>{message}</p>}
-            <button onClick={() => {navigate('/register')}}>Реєстрація</button>
+            {message && <p className="regoster-p">{message}</p>}
+            <button className="register-button" onClick={() => navigate('/register')}>
+                Реєстрація
+            </button>
         </div>
     );
 };

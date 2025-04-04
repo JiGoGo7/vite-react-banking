@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { logoutUser } from "../services/authService";
 import { registerCredit, payCredit, getApprovedCredit } from "../services/creditService";
+import "../desifnFiles/creditPage.css";
 
 const Credit = () => {
   const navigate = useNavigate();
@@ -9,19 +9,17 @@ const Credit = () => {
   const [credit, setCredit] = useState(null);
   const [userId, setUserId] = useState("");
   const [fullName, setFullName] = useState("");
-  const [age, setAge] = useState(0);
+  const [age, setAge] = useState("");
   const [job, setJob] = useState(false);
   const [maritalStatus, setMaritalStatus] = useState(false);
-  const [income, setIncome] = useState(0);
-  const [expenses, setExpenses] = useState(0);
-  const [requestedAmount, setRequestedAmount] = useState(0);
+  const [income, setIncome] = useState("");
+  const [expenses, setExpenses] = useState("");
+  const [requestedAmount, setRequestedAmount] = useState("");
   const [message, setMessage] = useState("");
 
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
-    if (!storedUser) {
-      navigate("/login");
-    } else {
+    if (storedUser) {
       const parsedUser = JSON.parse(storedUser);
       setUser(parsedUser);
       setUserId(parsedUser.userId);
@@ -31,16 +29,10 @@ const Credit = () => {
   useEffect(() => {
     if (user) {
       getApprovedCredit(user.username).then((credit) => {
-        if (credit) {
-          setCredit(credit);
-        } else {
-          setCredit(null);
-        }
-        console.log(credit)
+        setCredit(credit || null);
       });
     }
   }, [user]);
-  
 
   const handleCredit = async (e) => {
     e.preventDefault();
@@ -62,14 +54,12 @@ const Credit = () => {
         setMessage(response.message || "Помилка відправлення кредиту");
       }
     } catch (error) {
-      console.error("Помилка запиту:", error);
       alert("Помилка підключення до сервера");
     }
   };
 
   const handlePayCredit = async () => {
     if (!credit) return;
-  
     try {
       const response = await payCredit(user.userId, credit._id);
       if (response.ok) {
@@ -79,50 +69,42 @@ const Credit = () => {
         setMessage(response.message || "Помилка при виплаті кредиту");
       }
     } catch (error) {
-      console.error("Помилка виплати кредиту:", error);
       alert("Помилка підключення до сервера");
     }
   };
 
   return (
-    <div>
+    <div className="credit-container">
       {user ? (
         <>
-          <button onClick={() => navigate("/")}>Головна</button>
-          <button onClick={() => navigate("/aboutUs")}>Про нас</button>
-          <button onClick={() => navigate("/earnings")}>Заробіток</button>
-          <button onClick={() => navigate("/transfer")}>Переказ</button>
-          <button onClick={() => { logoutUser(); navigate("/login"); }}>Вийти</button>
-          <h2>Сторінка кредитів</h2>
+          <h2 className="credit-title">🏦 Сторінка кредитування</h2>
           {credit ? (
-            <div>
-              <h4>Ваш поточний кредит</h4>
-              <p><b>Сума кредиту:</b> {credit.requestedAmount} грн</p>
-              <p><b>Сума до сплати:</b> {credit.requestedAmount * 1.1} грн</p>
-              <button onClick={handlePayCredit}>Сплатити кредит</button>
+            <div className="credit-card">
+              <h4>Ваш активний кредит</h4>
+              <p><strong>Сума:</strong> {credit.requestedAmount} грн</p>
+              <p><strong>До сплати:</strong> {credit.requestedAmount * 1.1} грн</p>
+              <button className="credit-btn" onClick={handlePayCredit}>Погасити кредит</button>
             </div>
           ) : (
-            <>
-              <h4>Заповніть форму, щоб взяти кредит</h4>
-              <form onSubmit={handleCredit}>
-                <input type="text" placeholder="Повне ім'я" value={fullName} onChange={(e) => setFullName(e.target.value)} required />
-                <input type="number" placeholder="Вік" value={age} onChange={(e) => setAge(e.target.value)} required />
-                <label>
-                  Працевлаштований:
-                  <input type="checkbox" checked={job} onChange={(e) => setJob(e.target.checked)} />
-                </label>
-                <label>
-                  Одружений:
-                  <input type="checkbox" checked={maritalStatus} onChange={(e) => setMaritalStatus(e.target.checked)} />
-                </label>
-                <input type="number" placeholder="Місячний дохід" value={income} onChange={(e) => setIncome(e.target.value)} required />
-                <input type="number" placeholder="Місячні витрати" value={expenses} onChange={(e) => setExpenses(e.target.value)} required />
-                <input type="number" placeholder="Сума кредиту" value={requestedAmount} onChange={(e) => setRequestedAmount(e.target.value)} required />
-                <button type="submit">Відправити запит</button>
-              </form>
-            </>
+            <form className="credit-form" onSubmit={handleCredit}>
+              <h4>Заповніть форму, щоб подати заявку</h4>
+              <input type="text" placeholder="Повне ім'я" value={fullName} onChange={(e) => setFullName(e.target.value)} required />
+              <input type="number" placeholder="Вік" value={age} onChange={(e) => setAge(e.target.value)} required />
+              <label>
+                Працевлаштований:
+                <input type="checkbox" checked={job} onChange={(e) => setJob(e.target.checked)} />
+              </label>
+              <label>
+                Одружений:
+                <input type="checkbox" checked={maritalStatus} onChange={(e) => setMaritalStatus(e.target.checked)} />
+              </label>
+              <input type="number" placeholder="Дохід" value={income} onChange={(e) => setIncome(e.target.value)} required />
+              <input type="number" placeholder="Витрати" value={expenses} onChange={(e) => setExpenses(e.target.value)} required />
+              <input type="number" placeholder="Сума кредиту" value={requestedAmount} onChange={(e) => setRequestedAmount(e.target.value)} required />
+              <button type="submit" className="credit-btn">Відправити</button>
+            </form>
           )}
-          {message && <p>{message}</p>}
+          {message && <p className="credit-message">{message}</p>}
         </>
       ) : (
         <p>Перенаправлення...</p>

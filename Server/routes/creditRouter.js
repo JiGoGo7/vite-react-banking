@@ -35,5 +35,6 @@ router.post('/reject/:id', authMiddleware, roleMiddleware(['Admin', 'employee'])
 router.post('/getCredit', controller.getCredit);
 router.post("/payCredit", controller.payCredit);
 router.post("/getApprovedCredit", controller.getApprovedCredit);
+router.post('/getPaidCredit', controller.getPaidCredit);
 
 module.exports = router;
