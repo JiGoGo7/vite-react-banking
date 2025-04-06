@@ -4,17 +4,22 @@
     align-items: center;
     padding: 20px 85px;
     width: 100%;
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
   }
   .nav-left {
     display: flex;
     gap: 20px;
+    padding-left: 70px;
 }
 
 .nav-right {
     display: flex;
     align-items: center;
     gap: 20px;
+    padding-right: 200px;
 }
 
 .balance-box {

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../desifnFiles/aboutPage.css";
 import "../desifnFiles/navBar.css";
+import Component from "../components/Component";
 
 const AboutUs = () => {
   const navigate = useNavigate();
@@ -18,6 +19,7 @@ const AboutUs = () => {
     <div>
       {user ? (
         <div className="about-container">
+          <Component />
           <h1>Ласкаво просимо до банки Євгена!</h1>
           <p className="about-text">
             Ми створені для вашої фінансової свободи. Переказуйте гроші, заробляйте та отримуйте кредити – легко та швидко.

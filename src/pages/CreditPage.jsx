@@ -74,19 +74,19 @@ const Credit = () => {
   };
 
   return (
-    <div className="credit-container">
+    <div className="creditP-container">
       {user ? (
         <>
-          <h2 className="credit-title">🏦 Сторінка кредитування</h2>
+          <h2 className="creditP-title">🏦 Сторінка кредитування</h2>
           {credit ? (
-            <div className="credit-card">
+            <div className="creditP-card">
               <h4>Ваш активний кредит</h4>
               <p><strong>Сума:</strong> {credit.requestedAmount} грн</p>
               <p><strong>До сплати:</strong> {credit.requestedAmount * 1.1} грн</p>
-              <button className="credit-btn" onClick={handlePayCredit}>Погасити кредит</button>
+              <button className="creditP-btn" onClick={handlePayCredit}>Погасити кредит</button>
             </div>
           ) : (
-            <form className="credit-form" onSubmit={handleCredit}>
+            <form className="creditP-form" onSubmit={handleCredit}>
               <h4>Заповніть форму, щоб подати заявку</h4>
               <input type="text" placeholder="Повне ім'я" value={fullName} onChange={(e) => setFullName(e.target.value)} required />
               <input type="number" placeholder="Вік" value={age} onChange={(e) => setAge(e.target.value)} required />
@@ -101,10 +101,10 @@ const Credit = () => {
               <input type="number" placeholder="Дохід" value={income} onChange={(e) => setIncome(e.target.value)} required />
               <input type="number" placeholder="Витрати" value={expenses} onChange={(e) => setExpenses(e.target.value)} required />
               <input type="number" placeholder="Сума кредиту" value={requestedAmount} onChange={(e) => setRequestedAmount(e.target.value)} required />
-              <button type="submit" className="credit-btn">Відправити</button>
+              <button type="submit" className="creditP-btn">Відправити</button>
             </form>
           )}
-          {message && <p className="credit-message">{message}</p>}
+          {message && <p className="creditP-message">{message}</p>}
         </>
       ) : (
         <p>Перенаправлення...</p>

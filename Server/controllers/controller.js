@@ -23,7 +23,11 @@ class controller {
             const hashPassword = bcrypt.hashSync(password, 5);
             const user = new User({ username, password: hashPassword, role });
             await user.save();
-            return res.json({ message: 'Користувач успішно зареєстрований' });
+            return res.json({ 
+                message: 'Користувач успішно зареєстрований',
+                userId: user._id,
+                role: user.role,
+             });
         } catch (error) {
             console.log(error);
             res.status(500).json({ message: 'Registration error' });

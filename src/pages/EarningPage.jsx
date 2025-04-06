@@ -25,6 +25,7 @@ export default function Earnings() {
             getUserBalance(parsedUser.username).then((res) => {
                 setBalance(res.balance);
             });
+            console.log('User from localStorage:', parsedUser);
         }
     }, []);
 

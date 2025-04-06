@@ -9,9 +9,10 @@ export const registerUser = async (username, password) => {
         body: JSON.stringify({ username, password }),
     });
 
-    if (response.ok) localStorage.setItem('user', JSON.stringify({ username }));
-
     const data = await response.json();
+
+    if (response.ok) localStorage.setItem('user', JSON.stringify({ username, userId: data.userId, role:data.role }));
+
     return { ...data, ok: response.ok };
 };
 
@@ -33,5 +34,6 @@ export const loginUser = async (username, password) => {
 };
 
 export const logoutUser = () => {
-    localStorage.removeItem('username');
+    localStorage.removeItem('user');
+    localStorage.removeItem('token')
 };
