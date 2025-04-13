@@ -114,7 +114,7 @@ class CreditController {
                     credit.age,
                     credit.maritalStatus,
                     credit.job,
-                    credit.requestedAmount
+                    credit.requestedAmount,
                 ),
             );
 
@@ -186,14 +186,13 @@ class CreditController {
             const user = await User.findOne({ username: req.body.username });
             const credit = await Credit.findOne({ userId: user._id, status: 'Approved' });
             if (!credit) {
-                return res.status(404).json({ message: "No approved credit found" });
-            }    
+                return res.status(404).json({ message: 'No approved credit found' });
+            }
             res.json(credit);
         } catch (error) {
             console.log(error);
             res.status(500).json({ message: 'Find credit error ', error });
         }
-
     }
 
     async getPaidCredit(req, res) {
@@ -201,49 +200,51 @@ class CreditController {
             const user = await User.findOne({ username: req.body.username });
             const credit = await Credit.find({ userId: user._id, status: 'Paid' });
             if (!credit) {
-                return res.status(404).json({ message: "No approved credit found" });
-            }    
+                return res.status(404).json({ message: 'No approved credit found' });
+            }
             res.json(credit);
         } catch (error) {
             console.log(error);
             res.status(500).json({ message: 'Find credit error ', error });
         }
-
     }
 
     async payCredit(req, res) {
         try {
             const { userId, creditId } = req.body;
-    
+
             const credit = await Credit.findById(creditId);
-            if (!credit) return res.status(400).json({ message: "Кредит не знайдено" });
-    
-            if (credit.status === "Paid") {
-                return res.status(400).json({ message: "Кредит уже сплачений" });
+            if (!credit) return res.status(400).json({ message: 'Кредит не знайдено' });
+
+            if (credit.status === 'Paid') {
+                return res.status(400).json({ message: 'Кредит уже сплачений' });
             }
-    
+
             const user = await User.findById(userId);
-            if (!user) return res.status(400).json({ message: "Користувач не знайдений" });
-    
+            if (!user) return res.status(400).json({ message: 'Користувач не знайдений' });
+
             const amountToPay = credit.requestedAmount * 1.1;
-    
+
             if (user.balance < amountToPay) {
-                return res.status(400).json({ message: "Недостатньо коштів на балансі" });
+                return res.status(400).json({ message: 'Недостатньо коштів на балансі' });
             }
-    
+
             user.balance -= amountToPay;
             await user.save();
-    
-            credit.status = "Paid";
+
+            credit.status = 'Paid';
             await credit.save();
-    
-            return res.json({ message: "Кредит успішно погашений!", balance: user.balance, creditStatus: credit.status });
+
+            return res.json({
+                message: 'Кредит успішно погашений!',
+                balance: user.balance,
+                creditStatus: credit.status,
+            });
         } catch (error) {
             console.log(error);
-            return res.status(500).json({ message: "Помилка виплати кредиту" });
+            return res.status(500).json({ message: 'Помилка виплати кредиту' });
         }
     }
 }
-
 
 module.exports = new CreditController();

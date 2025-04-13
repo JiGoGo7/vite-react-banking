@@ -5,33 +5,33 @@
     background: #5a2a1e;
     border-radius: 15px;
     animation: fadeIn 1s ease-in-out;
-  }
-  
-  .creditP-title {
+}
+
+.creditP-title {
     text-align: center;
     font-size: 28px;
     margin-bottom: 20px;
-    color: #f3e5c1
-  }
-  
-  .creditP-form {
+    color: #f3e5c1;
+}
+
+.creditP-form {
     display: flex;
     flex-direction: column;
     gap: 10px;
     animation: slideIn 0.8s ease-in-out;
-    color: #f3e5c1
-  }
-  
-  .creditP-form input,
-  .creditP-form label {
+    color: #f3e5c1;
+}
+
+.creditP-form input,
+.creditP-form label {
     font-size: 16px;
-  }
-  
-  .creditP-form input[type="checkbox"] {
+}
+
+.creditP-form input[type='checkbox'] {
     margin-left: 10px;
-  }
-  
-  .creditP-btn {
+}
+
+.creditP-btn {
     padding: 10px;
     background-color: #f3e5c1;
     color: #5a2a1e;
@@ -39,63 +39,63 @@
     border-radius: 10px;
     cursor: pointer;
     transition: background 0.3s ease;
-  }
-  
-  .creditP-btn:hover {
+}
+
+.creditP-btn:hover {
     background-color: #86592d;
-  }
-  
-  .creditP-card {
+}
+
+.creditP-card {
     background-color: #f3e5c1;
     border-radius: 12px;
     padding: 20px;
     text-align: center;
     animation: fadeIn 0.7s ease;
-  }
-  
-  .creditP-message {
+}
+
+.creditP-message {
     margin-top: 15px;
     font-weight: bold;
     color: green;
     text-align: center;
-  }
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: scale(0.98);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-  
-  @keyframes slideIn {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0px);
-    }
-  }
-  
-  .creditP-form input[type="text"],
-.creditP-form input[type="number"] {
-  padding: 10px 14px;
-  border: 2px solid #ccc;
-  border-radius: 10px;
-  font-size: 16px;
-  transition: all 0.3s ease;
-  outline: none;
-  background-color: #fff;
-  color: #5a2a1e
 }
 
-.creditP-form input[type="text"]:focus,
-.creditP-form input[type="number"]:focus {
-  border-color: #f3e5c1;
-  box-shadow: 0 0 0 3px rgba(98, 0, 234, 0.1);
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+.creditP-form input[type='text'],
+.creditP-form input[type='number'] {
+    padding: 10px 14px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    outline: none;
+    background-color: #fff;
+    color: #5a2a1e;
+}
+
+.creditP-form input[type='text']:focus,
+.creditP-form input[type='number']:focus {
+    border-color: #f3e5c1;
+    box-shadow: 0 0 0 3px rgba(98, 0, 234, 0.1);
 }

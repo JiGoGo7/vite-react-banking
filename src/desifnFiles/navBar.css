@@ -8,8 +8,8 @@
     top: 0;
     left: 0;
     z-index: 1000;
-  }
-  .nav-left {
+}
+.nav-left {
     display: flex;
     gap: 20px;
     padding-left: 70px;
@@ -30,4 +30,3 @@
     padding: 12px 18px;
     border-radius: 12px;
 }
-  

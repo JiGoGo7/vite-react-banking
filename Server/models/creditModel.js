@@ -1,4 +1,4 @@
-const { Schema, model, Types } = require("mongoose");
+const { Schema, model, Types } = require('mongoose');
 
 const Credit = new Schema({
     userId: { type: Types.ObjectId, ref: 'User', required: true },
@@ -10,7 +10,7 @@ const Credit = new Schema({
     expenses: { type: Number, required: true },
     requestedAmount: { type: Number, required: true },
     status: { type: String, enum: ['Pending', 'Approved', 'Rejected', 'Paid'], default: 'Pending' },
-    createdAt: { type: Date, default: Date.now }
+    createdAt: { type: Date, default: Date.now },
 });
 
 module.exports = model('Credit', Credit);

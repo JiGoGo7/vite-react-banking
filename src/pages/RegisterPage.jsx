@@ -1,36 +1,35 @@
-import { useState } from "react";
-import { registerUser } from "../services/authService";
-import { useNavigate } from "react-router-dom";
-import "../desifnFiles/registerPage.css";
+import { useState } from 'react';
+import { registerUser } from '../services/authService';
+import { useNavigate } from 'react-router-dom';
+import '../desifnFiles/registerPage.css';
 
 const Register = () => {
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const [message, setMessage] = useState("");
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [message, setMessage] = useState('');
     const navigate = useNavigate();
 
     const handleRegister = async (e) => {
         e.preventDefault();
-    
+
         try {
             const response = await registerUser(username, password);
-            
+
             if (response.message) setMessage(response.message);
-            
+
             if (response.ok) {
                 navigate('/');
             } else {
-                console.log(response.message || "Помилка реєстрації");
+                console.log(response.message || 'Помилка реєстрації');
             }
         } catch (error) {
-            console.error("Помилка запиту:", error);
-            alert("Помилка підключення до сервера");
+            console.error('Помилка запиту:', error);
+            alert('Помилка підключення до сервера');
         }
     };
-    
-    
+
     return (
-<div className="register-div">
+        <div className="register-div">
             <h2 className="register-h2">Реєстрація</h2>
             <form className="register-form" onSubmit={handleRegister}>
                 <input

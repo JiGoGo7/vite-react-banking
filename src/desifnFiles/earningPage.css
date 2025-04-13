@@ -53,7 +53,7 @@
 }
 
 .save-button {
-    background: #4CAF50;
+    background: #4caf50;
     color: white;
     font-size: 18px;
     padding: 10px 15px;
@@ -86,13 +86,43 @@
     animation: fall 3s linear infinite;
 }
 
-.coin:nth-child(1) { left: 5%; animation-duration: 3s; }
-.coin:nth-child(2) { left: 15%; animation-duration: 4s; }
-.coin:nth-child(3) { left: 25%; animation-duration: 2.5s; }
-.coin:nth-child(4) { left: 35%; animation-duration: 3.5s; }
-.coin:nth-child(5) { left: 45%; animation-duration: 2.8s; }
-.coin:nth-child(6) { left: 55%; animation-duration: 3.2s; }
-.coin:nth-child(7) { left: 65%; animation-duration: 3.7s; }
-.coin:nth-child(8) { left: 75%; animation-duration: 2.9s; }
-.coin:nth-child(9) { left: 85%; animation-duration: 3.3s; }
-.coin:nth-child(10) { left: 95%; animation-duration: 2.7s; }
+.coin:nth-child(1) {
+    left: 5%;
+    animation-duration: 3s;
+}
+.coin:nth-child(2) {
+    left: 15%;
+    animation-duration: 4s;
+}
+.coin:nth-child(3) {
+    left: 25%;
+    animation-duration: 2.5s;
+}
+.coin:nth-child(4) {
+    left: 35%;
+    animation-duration: 3.5s;
+}
+.coin:nth-child(5) {
+    left: 45%;
+    animation-duration: 2.8s;
+}
+.coin:nth-child(6) {
+    left: 55%;
+    animation-duration: 3.2s;
+}
+.coin:nth-child(7) {
+    left: 65%;
+    animation-duration: 3.7s;
+}
+.coin:nth-child(8) {
+    left: 75%;
+    animation-duration: 2.9s;
+}
+.coin:nth-child(9) {
+    left: 85%;
+    animation-duration: 3.3s;
+}
+.coin:nth-child(10) {
+    left: 95%;
+    animation-duration: 2.7s;
+}

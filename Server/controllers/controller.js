@@ -23,11 +23,11 @@ class controller {
             const hashPassword = bcrypt.hashSync(password, 5);
             const user = new User({ username, password: hashPassword, role });
             await user.save();
-            return res.json({ 
+            return res.json({
                 message: 'Користувач успішно зареєстрований',
                 userId: user._id,
                 role: user.role,
-             });
+            });
         } catch (error) {
             console.log(error);
             res.status(500).json({ message: 'Registration error' });
@@ -45,9 +45,9 @@ class controller {
             if (!validPassword) return res.status(400).json({ message: 'Неправильний пароль' });
 
             const token = jwt.sign(
-                { userId: user._id, username: user.username, role: user.role }, 
-                process.env.JWT_SECRET_KEY, 
-                { expiresIn: process.env.JWT_EXPIRES_IN }
+                { userId: user._id, username: user.username, role: user.role },
+                process.env.JWT_SECRET_KEY,
+                { expiresIn: process.env.JWT_EXPIRES_IN },
             );
 
             return res.json({
@@ -65,12 +65,12 @@ class controller {
         try {
             const { userId, newBalance } = req.body;
             const user = await User.findById(userId);
-    
+
             if (!user) return res.status(400).json({ message: 'Користувач не знайдений' });
-    
+
             user.balance += newBalance;
             await user.save();
-    
+
             console.log(req.body);
             return res.json({ message: 'Баланс оновлено!', balance: user.balance });
         } catch (error) {
@@ -78,7 +78,7 @@ class controller {
             return res.status(500).json({ message: 'Помилка оновлення балансу' });
         }
     }
-    
+
     async getBalance(req, res) {
         try {
             const { username } = req.body;
@@ -113,7 +113,7 @@ class controller {
 
     async findUserById(req, res) {
         try {
-            const { userId } = req.body
+            const { userId } = req.body;
             const user = await User.findById(userId);
             if (!user) return res.status(400).json({ message: 'Користувача не знайдено' });
             res.json(user);

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { loginUser } from '../services/authService';
-import { useNavigate } from "react-router-dom";
-import '../desifnFiles/registerPage.css'
+import { useNavigate } from 'react-router-dom';
+import '../desifnFiles/registerPage.css';
 
 const Login = () => {
     const [username, setUsername] = useState('');
@@ -11,7 +11,7 @@ const Login = () => {
 
     const handleLogin = async (e) => {
         e.preventDefault();
-        
+
         try {
             const response = await loginUser(username, password);
 
@@ -29,7 +29,7 @@ const Login = () => {
     };
 
     return (
-            <div className="register-div">
+        <div className="register-div">
             <h2 className="register-h2">Авторизація</h2>
             <form className="register-form" onSubmit={handleLogin}>
                 <input

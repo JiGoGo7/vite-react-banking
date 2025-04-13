@@ -4,36 +4,36 @@
 .transfer-container {
     opacity: 0;
     animation: fadeIn 0.5s forwards;
-  }
-  
-  @keyframes fadeIn {
+}
+
+@keyframes fadeIn {
     0% {
-      opacity: 0;
+        opacity: 0;
     }
     100% {
-      opacity: 1;
+        opacity: 1;
     }
-  }
-  
-  .transfer-header {
+}
+
+.transfer-header {
     text-align: center;
     font-size: 2rem;
     margin-bottom: 20px;
-  }
-  
-  .transfer-text {
+}
+
+.transfer-text {
     text-align: center;
     font-size: 1rem;
     margin-bottom: 20px;
-  }
+}
 
-  .transfer-form {
+.transfer-form {
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-  
-  .input-field {
+}
+
+.input-field {
     width: 80%;
     max-width: 400px;
     padding: 10px;
@@ -41,14 +41,14 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 1rem;
-  }
-  
-  .input-field:focus {
+}
+
+.input-field:focus {
     border-color: #5a2a1e;
     outline: none;
-  }
-  
-  .transfer-button {
+}
+
+.transfer-button {
     width: 80%;
     max-width: 400px;
     padding: 12px;
@@ -59,20 +59,20 @@
     font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.3s;
-  }
-  
-  .transfer-button:hover {
+}
+
+.transfer-button:hover {
     background: #7a3d2b;
-  }
-  
-  .balance-info {
+}
+
+.balance-info {
     margin-top: 20px;
     font-size: 1.1rem;
     text-align: center;
-  }
+}
 
-  .transfer-form input[type="text"],
-  .transfer-form input[type="number"] {
+.transfer-form input[type='text'],
+.transfer-form input[type='number'] {
     padding: 10px 14px;
     border: 2px solid #ccc;
     border-radius: 10px;
@@ -80,12 +80,11 @@
     transition: all 0.3s ease;
     outline: none;
     background-color: #fff;
-    color: #5a2a1e
-  }
-  
-  .transfer-form input[type="text"]:focus,
-  .transfer-form input[type="number"]:focus {
+    color: #5a2a1e;
+}
+
+.transfer-form input[type='text']:focus,
+.transfer-form input[type='number']:focus {
     border-color: #f3e5c1;
     box-shadow: 0 0 0 3px rgba(98, 0, 234, 0.1);
-  }
-  
+}

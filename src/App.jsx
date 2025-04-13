@@ -1,15 +1,15 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
-import { useEffect } from "react";
-import Navbar from "./components/NavBar"; 
-import Earnings from "./pages/EarningPage";
-import AboutUs from "./pages/AboutPage";
-import Transfer from "./pages/TransferPage";
-import Main from "./pages/MainPage";
-import Register from "./pages/RegisterPage";
-import Login from "./pages/LoginPage";
-import Admin from "./pages/AdminPage";
-import Credit from "./pages/CreditPage";
-import CreditHistory from "./pages/CreditHistoryPage";
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
+import Navbar from './components/NavBar';
+import Earnings from './pages/EarningPage';
+import AboutUs from './pages/AboutPage';
+import Transfer from './pages/TransferPage';
+import Main from './pages/MainPage';
+import Register from './pages/RegisterPage';
+import Login from './pages/LoginPage';
+import Admin from './pages/AdminPage';
+import Credit from './pages/CreditPage';
+import CreditHistory from './pages/CreditHistoryPage';
 
 function App() {
     useEffect(() => {
@@ -27,8 +27,8 @@ function App() {
 }
 
 function AppContent() {
-    const location = useLocation(); 
-    const hideNavbar = location.pathname === "/login" || location.pathname === "/register";
+    const location = useLocation();
+    const hideNavbar = location.pathname === '/login' || location.pathname === '/register';
 
     return (
         <>
